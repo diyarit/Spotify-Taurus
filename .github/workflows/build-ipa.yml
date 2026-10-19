@@ -32,13 +32,14 @@ jobs:
 
       - name: Check source URL
         env:
-          INPUT_IPA_URL: ${{ inputs.ipa_url }}
           SAVED_IPA_URL: ${{ secrets.SPOTIFY_IPA_URL }}
         run: |
           python3 - <<'PY'
-          import os
+          import json, os
           from urllib.parse import urlsplit
-          value = os.environ.get('INPUT_IPA_URL') or os.environ.get('SAVED_IPA_URL', '')
+          with open(os.environ['GITHUB_EVENT_PATH']) as event_file:
+              event = json.load(event_file)
+          value = event.get('inputs', {}).get('ipa_url') or os.environ.get('SAVED_IPA_URL', '')
           try:
               parsed = urlsplit(value)
               valid = parsed.scheme == 'https' and parsed.hostname and not any(c in value for c in '\r\n')
@@ -76,11 +77,10 @@ jobs:
 
       - name: Download IPA
         env:
-          INPUT_IPA_URL: ${{ inputs.ipa_url }}
           SAVED_IPA_URL: ${{ secrets.SPOTIFY_IPA_URL }}
         run: |
           mkdir -p ipa
-          IPA_SOURCE_URL="${INPUT_IPA_URL:-$SAVED_IPA_URL}"
+          IPA_SOURCE_URL="$(python3 -c 'import json,os; print(json.load(open(os.environ["GITHUB_EVENT_PATH"])).get("inputs", {}).get("ipa_url") or os.environ.get("SAVED_IPA_URL", ""))')"
           curl --fail --location --silent --show-error --retry 3 --connect-timeout 30 \
             --proto '=https' --proto-redir '=https' "$IPA_SOURCE_URL" -o ipa/spotify.ipa
           python3 - <<'PY'
