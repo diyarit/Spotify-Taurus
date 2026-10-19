@@ -65,3 +65,7 @@ git push origin main
 
 Avoid `git reset --hard upstream/main` and forced fork-sync commands: those can
 replace the fork's custom history. Normal merges retain the extension commits.
+
+## Verified setup
+
+On October 19, 2026, the [Safari checks](https://github.com/diyarit/Spotify-Taurus/actions/runs/39294364536) passed in GitHub Actions, including 24 test groups and native extension compilation/signature verification. The [first sync run](https://github.com/diyarit/Spotify-Taurus/actions/runs/39294238343) passed and found no newer upstream changes, so it correctly opened no PR. Local sync tests also verify extension retention and conflict rollback. The full IPA workflow has not been run remotely because no hosted source IPA URL is configured; the full integrated IPA was built and verified locally.

@@ -100,7 +100,7 @@ Production signing, device installation, actual Safari extension activation, and
 Spotify routing have **not** been verified. No device installation was attempted,
 as requested. The independent
 `.github/workflows/test-safari.yml` builds and verifies the extension on an Xcode
-runner without needing a Spotify IPA; it has been added locally, not run remotely.
+runner without needing a Spotify IPA. [GitHub verification passed](https://github.com/diyarit/Spotify-Taurus/actions/runs/39294364536) on October 19, 2026, including all 24 routing/lifecycle/packaging/sync test groups and native extension compilation.
 
 The browser smoke test is optional:
 
