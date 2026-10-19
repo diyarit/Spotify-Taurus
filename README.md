@@ -1,5 +1,7 @@
 <h1 align="center">Taurus.</h1>
 
+This Safari-enabled fork follows the [official Taurus project on GitLab](https://gitlab.com/taurustweak/taurus). IPA builds include the Open in Spotify extension; [fork maintenance](docs/fork-maintenance.md) explains builds and synchronization.
+
 <p align="center">Open-Sourced fork of chroma.pw with built-in Spotify Premium. </p>
 
 <p align="center">

@@ -28,9 +28,9 @@ jobs:
           ref: main
           fetch-depth: 0
 
-      - name: Fetch original project
+      - name: Fetch official Taurus from GitLab
         run: |
-          git remote add upstream https://github.com/GuramiGorgadze/Spotify-Taurus.git
+          git remote add upstream https://gitlab.com/taurustweak/taurus.git
           git fetch upstream main
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
@@ -46,7 +46,7 @@ jobs:
           PR_NUMBER="$(gh pr list --repo "$GITHUB_REPOSITORY" --base main --head "$SYNC_BRANCH" --state open --json number --jq '.[0].number // empty')"
           if [ -z "$PR_NUMBER" ]; then
             cat > "$RUNNER_TEMP/sync-body.md" <<'BODY'
-          Merges the original Taurus updates into this fork while retaining its Safari extension and build integration.
+          Merges official GitLab Taurus updates into this fork while retaining its Safari extension and build integration.
 
           Review the changes and the **Safari link extension checks** workflow on this branch before merging. Merge conflicts stop synchronization without changing main. The IPA build workflow verifies that packaged Safari resources still match this fork.
           BODY

@@ -1,7 +1,7 @@
 # Maintain the Safari-enabled fork
 
 This fork is `diyarit/Spotify-Taurus`. Its upstream is
-`GuramiGorgadze/Spotify-Taurus`. The Safari extension lives in
+[the official Taurus project on GitLab](https://gitlab.com/taurustweak/taurus). The Safari extension lives in
 `extension/OpenSpotify/`; its packaging hook is in `scripts/pipeline.sh`.
 Keep both when resolving future upstream changes.
 
@@ -22,7 +22,7 @@ resources. A stale, absent or wrongly identified extension fails the build. The
 source IPA is removed from the runner afterward. No IPA or signing credentials
 belong in Git. GitHub artifacts expire after seven days.
 
-The original Release workflow publishes a tweak `.deb`, which cannot contain the
+The inherited GitHub Release workflow publishes a tweak `.deb`, which cannot contain the
 Safari `.appex`. It is therefore disabled by default in forks. Set repository
 variable `ENABLE_FORK_RELEASES=true` only after configuring its `SG_FLAG_LIST` secret
 and release permissions. Use the IPA workflow for the complete Safari-enabled app.
@@ -35,7 +35,7 @@ IPA downloads over this build.
 **Sync upstream while preserving Safari extension** runs weekly on Monday at
 09:23 UTC, or manually from Actions. It:
 
-- Fetches the original project's `main` branch.
+- Fetches `main` directly from `https://gitlab.com/taurustweak/taurus.git`.
 - Merges updates with this fork on `automation/sync-upstream`.
 - Pushes that branch and creates or updates one PR targeting this fork's `main`.
 - Explicitly dispatches the Safari tests/native extension compilation on the sync
@@ -65,6 +65,13 @@ git push origin main
 
 Avoid `git reset --hard upstream/main` and forced fork-sync commands: those can
 replace the fork's custom history. Normal merges retain the extension commits.
+
+GitHub still displays the old GitHub mirror as the fork's network parent. That is
+GitHub repository metadata; the authoritative source and synchronization remote
+are now GitLab. No history was rewritten or force-pushed. The common ancestor was
+`b33f98b`; official GitLab updates through `db59417` were merged, retaining all Safari
+commits. A local pre-migration Git bundle is kept in the Desktop workspace's
+`backups/` directory.
 
 ## Verified setup
 

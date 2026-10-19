@@ -122,7 +122,8 @@ right content. Confirm the Live Activity and normal Taurus features still work.
 
 ## Source references
 
-- Taurus base: https://github.com/GuramiGorgadze/Spotify-Taurus at `b33f98b7a0ebbf45f465203815461e90bd51a2c0`.
+- Authoritative Taurus source: https://gitlab.com/taurustweak/taurus at `db5941761486230f359f2adec7ddae015dc834bc` (Taurus 0.60.2).
+- The initial GitHub copy at `b33f98b` shares the same history. Its newer GitLab commits were merged while retaining the Safari extension.
 - Requested extension reference: https://github.com/BillyCurtis/OpenSpotifySafariExtension at `6523fcd3a45796beb89ce82f3f9ba032c85ae837`.
   The sibling clone is kept intact. Its compiled executable, images, and JavaScript
   have not been bundled into Taurus; the routing and native shell here are new source.
