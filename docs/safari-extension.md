@@ -133,3 +133,10 @@ right content. Confirm the Live Activity and normal Taurus features still work.
 ## Fork workflow
 
 See [fork maintenance](fork-maintenance.md) for building this integration in GitHub Actions and merging upstream updates while retaining it. The finished IPA is checked by `scripts/check-safari-ipa.py`; run it locally with the IPA path to check packaging.
+
+The source was subsequently updated from the official GitLab repository through
+`db59417` (Taurus 0.60.2). A complete rebuild produced
+`../Taurus-0.60.2-Safari.ipa`; archive integrity, embedded extensions, injected
+libraries and byte-identical Safari resources passed verification. The previous
+0.60.1 IPA is preserved in the workspace's `backups/` directory. Actual on-device
+behavior still needs verification after signing.

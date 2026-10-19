@@ -76,3 +76,13 @@ commits. A local pre-migration Git bundle is kept in the Desktop workspace's
 ## Verified setup
 
 On October 19, 2026, the [Safari checks](https://github.com/diyarit/Spotify-Taurus/actions/runs/39294364536) passed in GitHub Actions, including 24 test groups and native extension compilation/signature verification. The [first sync run](https://github.com/diyarit/Spotify-Taurus/actions/runs/39294238343) passed and found no newer upstream changes, so it correctly opened no PR. Local sync tests also verify extension retention and conflict rollback. The full IPA workflow has not been run remotely because no hosted source IPA URL is configured; the full integrated IPA was built and verified locally.
+
+## Official GitLab source correction
+
+On October 19, 2026, the fork merged the seven official GitLab commits through
+`db5941761486230f359f2adec7ddae015dc834bc` (Taurus 0.60.2), retaining the Safari source
+and packaging hook unchanged. All 24 local test groups, layer checks and workflow
+lint passed. The full Taurus 0.60.2 IPA was rebuilt locally and passed archive and
+Safari packaging checks. The [corrected sync run](https://github.com/diyarit/Spotify-Taurus/actions/runs/39309105466) fetched GitLab directly and passed with no outstanding upstream changes.
+
+The [GitHub Safari checks](https://github.com/diyarit/Spotify-Taurus/actions/runs/39309106227) also passed against the GitLab-updated source, including all 24 test groups and native extension compilation/signature verification.
