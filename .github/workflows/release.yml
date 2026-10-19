@@ -13,6 +13,8 @@ permissions:
 
 jobs:
   release-please:
+    # Fork builds use build-ipa.yml. Opt in only after configuring release secrets/permissions.
+    if: github.repository == 'GuramiGorgadze/Spotify-Taurus' || vars.ENABLE_FORK_RELEASES == 'true'
     runs-on: ubuntu-latest
     outputs:
       created: ${{ steps.release.outputs.release_created }}

@@ -106,3 +106,9 @@ the view trees are read through.
 
 All modified and distributed code from chroma.pw is licensed under GPL-3.0, no code under PolyForm Strict License 1.0.0 is distributed. 
 Not affiliated with Spotify.
+
+## Safari link opener
+
+Builds include the Open in Spotify Safari extension by default. See [setup, coverage and verification](docs/safari-extension.md). Run `make test-safari` to check it; use `SAFARI=0` to build without it.
+
+This fork keeps the Safari extension when merging upstream updates. See [fork builds and synchronization](docs/fork-maintenance.md) for the GitHub Actions workflows.
